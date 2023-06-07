@@ -3,120 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
-             sharedTransitions:SharedTransitionShell.TransitionDuration="800"
+             sharedTransitions:SharedTransitionShell.TransitionDuration="2500"
+             Title="Before transition"
              x:Class="Gtech.Transitions.MainPage">
+      <StackLayout Padding="10" Spacing="20" Margin="0,20">
+        <Grid ColumnSpacing="10" HorizontalOptions="FillAndExpand">
 
-    <ContentPage.Resources>
-        <xamanimation:FadeToAnimation
-                x:Key="FadeToAnimation"
-                Target="{x:Reference FadeBox}"
-                Duration="2000"
-                Opacity="0"/>
-        <xamanimation:FadeInAnimation
-                x:Key="FadeInAnimation"
-                Target="{x:Reference FadeBox}"
-                Duration="2000" 
-                Direction="Down" />
-        <xamanimation:FadeOutAnimation
-                x:Key="FadeOutAnimation"
-                Target="{x:Reference FadeOutBox}"
-                Duration="2000" 
-                Direction="Down" />
-        <xamanimation:TranslateToAnimation
-                x:Key="TranslateToAnimation"
-                Target="{x:Reference TranslateY}"
-                Duration="700" 
-                TranslateX="-150"
-                TranslateY="-300" />
-    </ContentPage.Resources>
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0"
-                   sharedTransitions:Transition.Name="Frame1" >
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="12" />
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <BoxView
-            x:Name="FadeBox"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            HeightRequest="120"
-            WidthRequest="120"
-            Color="Blue" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <BoxView
-            x:Name="FadeOutBox"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            HeightRequest="120"
-            WidthRequest="120"
-            Color="Red" />
+            <Frame Padding="0" HasShadow="False" BackgroundColor="GreenYellow" CornerRadius="5"
+                   Grid.Row="0" Grid.Column="0"
+                   sharedTransitions:Transition.Name="Frame1" />
 
+            <Label Text="Frame"
+                   Grid.Row="1" Grid.Column="0"/>
 
-        <FlexLayout Direction="Row"
-                    VerticalOptions="CenterAndExpand"
-                    JustifyContent="SpaceBetween">
-            <BoxView
-                x:Name="TranslateBox"
-                HorizontalOptions="Center"
-                HeightRequest="120"
-                WidthRequest="120"
-                Color="LightYellow" />
+            <StackLayout BackgroundColor="Red" 
+                         Grid.Row="0" Grid.Column="1"
+                         sharedTransitions:Transition.Name="Stack2" />
 
-            <BoxView
-                x:Name="TranslateY"
-                HorizontalOptions="Center"
-                HeightRequest="120"
-                WidthRequest="300"
-                Color="Yellow" />
-        </FlexLayout>
-        <Button Text="Fade TO animation"
-                HeightRequest="44"
-                VerticalOptions="EndAndExpand"
-                BackgroundColor="DeepSkyBlue"
-                FontAttributes="Bold">
-            <Button.Triggers>
-                <EventTrigger Event="Clicked">
-                    <xamanimation:BeginAnimation Animation="{StaticResource FadeToAnimation}" />
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Text="Fade OUT animation"
-                HeightRequest="44"
-                BackgroundColor="red"
-                FontAttributes="Bold">
-            <Button.Triggers>
-                <EventTrigger Event="Clicked">
-                    <xamanimation:BeginAnimation Animation="{StaticResource FadeOutAnimation}" />
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Text="Fade IN animation"
-                HeightRequest="44"
-                BackgroundColor="DeepSkyBlue"
-                FontAttributes="Bold">
-            <Button.Triggers>
-                <EventTrigger Event="Clicked">
-                    <xamanimation:BeginAnimation Animation="{StaticResource FadeInAnimation}" />
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Text="Translate animation"
-                HeightRequest="44"
-                BackgroundColor="LightYellow"
-                FontAttributes="Bold" Clicked="Button_Clicked">
-        </Button>
+            <Label Text="StackLayout"
+                   Grid.Row="1" Grid.Column="1"/>
+            
+            <BoxView BackgroundColor="Blue" CornerRadius="20"
+                     Grid.Row="3" Grid.Column="0"
+                     sharedTransitions:Transition.Name="Box3" />
+
+            <Label Text="BoxView"
+                   Grid.Row="4" Grid.Column="0"/>
+
+        </Grid>
+
+        <Label Text="{Binding Source={x:Reference SliderDuration}, Path=Value, StringFormat='Transition duration: {0}'}" HorizontalOptions="Center"/>
+        <Slider x:Name="SliderDuration" Maximum="5000" Value="1200" Margin="20,0" MinimumTrackColor="Blue" MaximumTrackColor="#757575" />
+
+        <Button Text="Tap to navigate!" Clicked="Button_OnClicked" />
+
     </StackLayout>
-
 </ContentPage>

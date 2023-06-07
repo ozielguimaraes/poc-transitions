@@ -16,5 +16,6 @@ namespace Gtech.Transitions
         {
             InitializeComponent();
         }
+
     }
 }
