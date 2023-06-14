@@ -17,5 +17,10 @@ namespace Gtech.Transitions
             InitializeComponent();
         }
 
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+            //await Navigation.PushAsync(new MainPage());
+        }
     }
 }

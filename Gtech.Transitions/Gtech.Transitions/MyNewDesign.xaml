@@ -4,18 +4,18 @@
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              Title="After transition"
              x:Class="Gtech.Transitions.MyNewDesign">
-    <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="10">
+    <StackLayout Spacing="20" Padding="10">
             
-            <Frame Padding="0" HasShadow="False" BackgroundColor="GreenYellow" HeightRequest="100" WidthRequest="100" CornerRadius="50" HorizontalOptions="Start" 
-                   sharedTransitions:Transition.Name="Frame1" />
+        <Frame Padding="0" HasShadow="False" BackgroundColor="GreenYellow" HeightRequest="100" WidthRequest="100" CornerRadius="50" HorizontalOptions="Start" 
+                sharedTransitions:Transition.Name="Frame1" />
             
-            <StackLayout BackgroundColor="Red" 
-                         sharedTransitions:Transition.Name="Stack2" HeightRequest="100" />
+        <StackLayout BackgroundColor="Red" 
+                        sharedTransitions:Transition.Name="Stack2" HeightRequest="100" />
             
-            <BoxView BackgroundColor="Blue" HeightRequest="80" CornerRadius="{OnPlatform Android=20, iOS=0}"
-                     sharedTransitions:Transition.Name="Box3"/>
+        <BoxView VerticalOptions="EndAndExpand" BackgroundColor="Blue" HeightRequest="80" CornerRadius="{OnPlatform Android=20, iOS=0}"
+                    sharedTransitions:Transition.Name="Box3"/>
 
-        </StackLayout>
-    </ContentPage.Content>
+        <Button Text="Back!" Clicked="Button_OnClicked" />
+
+    </StackLayout>
 </ContentPage>

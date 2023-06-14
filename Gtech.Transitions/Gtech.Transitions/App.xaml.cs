@@ -8,7 +8,7 @@ namespace Gtech.Transitions
         public App()
         {
             InitializeComponent();
-            MainPage = new SharedTransitionNavigationPage(new MainPage());
+            MainPage = new SharedTransitionNavigationPage(new HomePage());
         }
 
         //public App(IPlatformInitializer initializer = null) : base(initializer) { }
